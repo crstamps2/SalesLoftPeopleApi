@@ -29,5 +29,8 @@ module SalesLoftPeopleApi
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.salesloft_api_url = ENV['SALESLOFT_API_URL']
+    config.salesloft_api_key = ENV['SALESLOFT_API_KEY']
   end
 end
