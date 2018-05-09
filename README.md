@@ -1,24 +1,21 @@
-# README
+# SaleLoft People API
+A rails backend API for the [SalesLoft React Client](https://github.com/crstamps2/SalesLoftPeopleClient)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Usage
+Simply clone this repo: `cd ~/workspace && git clone https://github.com/crstamps2/SalesLoftPeopleApi.git`
 
-Things you may want to cover:
+Open the directory: `cd ~/workspace/SalesLoftPeopleApi`
 
-* Ruby version
+### ENV
 
-* System dependencies
+Make sure to start the app<sup>1</sup> with the `SALESLOFT_API_KEY` and `SALESLOFT_API_URL` ENVs set: `bundle && SALESLOFT_API_KEY={key} SALESLOFT_API_URL=https://api.salesloft.com/v2 rails s`
 
-* Configuration
+This should automatically start the app and will respond at localhost:3000
 
-* Database creation
+## React Client
 
-* Database initialization
+While this is a standalone API rails app, you can view a website that leverages this API by starting up the [React Client](https://github.com/crstamps2/SaleLoftPeopleClient).
 
-* How to run the test suite
+<hr>
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<sup>1</sup>Application assumes you have ruby 2.4.1 installed and the Bundler gem installed. I suggest using [rbenv](https://github.com/rbenv/rbenv) to manage your ruby environment.
