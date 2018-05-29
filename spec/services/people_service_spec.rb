@@ -16,4 +16,21 @@ RSpec.describe PeopleService, type: :service do
       expect(PeopleService.get).to eq '{"person1":"bob saget"}'
     end
   end
+
+  describe '#get' do
+    before do
+      allow(Rails.application.config).to receive(:salesloft_api_url).and_return('bogus-url.com')
+      allow(Rails.application.config).to receive(:salesloft_api_key).and_return('123456')
+      allow(HTTParty).to receive(:get).and_return({ person1: 'bob saget' }.to_json)
+    end
+
+    it 'gets a person from from an api call' do
+      id = 1
+      expect(HTTParty).to receive(:get).with('bogus-url.com/people/1.json',
+        headers: {
+            "Authorization":"Bearer 123456"
+        })
+      expect(PeopleService.get_person(id)).to eq '{"person1":"bob saget"}'
+    end
+  end
 end
