@@ -39,4 +39,33 @@ RSpec.describe PeopleController, type: :controller do
     end
   end
 
+  describe 'GET #emailBreakdown' do
+    let(:people) do
+      {
+        "data": [
+          {
+            "id":1,
+            "emailAddress": "hey@hey.net",
+          },
+          {
+            "id":2,
+            "emailAddress": "foo@bar.com",
+          },
+          {
+            "id":3,
+            "emailAddress": "fiz@bah.org",
+          }
+        ]
+      }
+    end
+    before do
+      allow(PeopleService).to receive(:get).and_return(people)
+    end
+
+    it 'returns a breakdown of characters in a persons email' do
+      get :emailBreakdown, params: {id: 1}
+      expected = "{\"h\":2,\"e\":3,\"y\":2,\"@\":1,\".\":1,\"n\":1,\"t\":1}"
+      expect(response.body).to eq expected
+    end
+  end
 end
