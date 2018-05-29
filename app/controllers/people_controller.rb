@@ -7,14 +7,14 @@ class PeopleController < ApplicationController
 
   def allEmailBreakdown
     people = PeopleService.get.to_camelback_keys
-    emails = people[:data].map { |person| person[:emailAddress] }
+    emails = people.with_indifferent_access.fetch('data').map { |person| person[:emailAddress] }
     render json: EmailBreakdownService.get_breakdown_of_emails(emails)
   end
 
   def emailBreakdown
     people = PeopleService.get.to_camelback_keys
-    email = people[:data].detect { |person| 
-      person[:id] == params['id'].to_i 
+    email = people.with_indifferent_access.fetch('data').detect { |person| 
+      person.with_indifferent_access[:id] == params['id'].to_i 
     }[:emailAddress]
     render json: EmailBreakdownService.get_breakdown_of_email(email)
   end
