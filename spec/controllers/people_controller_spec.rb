@@ -40,28 +40,18 @@ RSpec.describe PeopleController, type: :controller do
   end
 
   describe 'GET #emailBreakdown' do
-    let(:people) {}
+    let(:person) {}
     before do
-      allow(PeopleService).to receive(:get).and_return(people.stringify_keys)
+      allow(PeopleService).to receive(:get_person).and_return(person.stringify_keys)
     end
 
     context 'with stringified keys' do
-      let(:people) do
+      let(:person) do
         {
-          "data": [
+          "data": 
             {
-              "id":1,
               "emailAddress": "hey@hey.net",
-            },
-            {
-              "id":2,
-              "emailAddress": "foo@bar.com",
-            },
-            {
-              "id":3,
-              "emailAddress": "fiz@bah.org",
             }
-          ]
         }
       end
 
@@ -73,22 +63,12 @@ RSpec.describe PeopleController, type: :controller do
     end
 
     context 'with symbolized keys' do
-      let(:people) do
+      let(:person) do
         {
-          data: [
+          data: 
             {
-              id:1,
               emailAddress: "hey@hey.net",
-            },
-            {
-              id:2,
-              emailAddress: "foo@bar.com",
-            },
-            {
-              id:3,
-              emailAddress: "fiz@bah.org",
             }
-          ]
         }
       end
 
