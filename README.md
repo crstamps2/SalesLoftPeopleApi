@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/crstamps2/SalesLoftPeopleApi.svg?branch=master)](https://travis-ci.com/crstamps2/SalesLoftPeopleApi)
+
 # SaleLoft People API
 A rails backend API for the [SalesLoft React Client](https://github.com/crstamps2/SalesLoftPeopleClient)
 
